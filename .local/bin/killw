@@ -4,5 +4,4 @@
 # Email: geldmacher@protonmail.com
 
 WINID=$(xwininfo | grep "Window id" | awk '{print $4}')
-echo $WINID
-#wmctrl -ic $WINID
+wmctrl -ic $WINID
