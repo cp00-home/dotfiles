@@ -22,7 +22,7 @@ This is an uncompleted list of software, that I use on a daily base:
 - tmux (terminal multiplexer)
 
 ## Setup
-I keep scripts that I find useful in `.local/bin`. Config files are stored in `.config/`. I am able to source my `bashrc` from there aswell by using the following if-statement in `/etc/bash.bashrc`:
+I keep scripts that I find useful in `.local/bin/`. Config files are stored in `.config/`. I am able to source my `bashrc` from there aswell by using the following if-statement in `/etc/bash.bashrc`:
 ```
 if [ -s "$HOME/.config/bash/bashrc" ]; then
   . "$HOME/.config/bash/bashrc"
@@ -40,6 +40,7 @@ While I enjoy the solarized-light theme, I dislike some of the color choices tha
 ## Installation
 Make sure to backup your most important files before cloning this repository to your machine. I take no responsibility for any loss of data or damage, that might occur - you have been warned:
 ```
+cd ~
 git clone https://github.com/cp00-home/dotfiles.git
 ```
 
