@@ -1,0 +1,16 @@
+#!/bin/sh
+# DWMBAR CPU Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+
+read CPU a b c PREVIDLE REST < /proc/stat
+PREVTOTAL="$((a+b+c+PREVIDLE))"
+sleep 0.5
+read CPU a b c IDLE REST < /proc/stat
+TOTAL="$((a+b+c+IDLE))"
+CPU=$((100*( (TOTAL-PREVTOTAL) - (IDLE-PREVIDLE) ) / (TOTAL-PREVTOTAL) ))
+
+printf "^c$COLOR^ ^d^%s%% " "$CPU"
+

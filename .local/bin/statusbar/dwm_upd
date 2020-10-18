@@ -1,0 +1,10 @@
+#!/bin/sh
+# DWMBAR Updates Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+UPD="$(pacman -Qu | wc -l)"
+
+printf "^c$COLOR^ ^d^%s " "$UPD"
+

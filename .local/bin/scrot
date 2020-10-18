@@ -1,0 +1,8 @@
+#!/bin/bash
+# Simple screenshot utility
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+SCROT="$HOME/pictures/$(date +%Y%m%d%H%m%S)_screenshot.jpg"
+import -window root -quality 100 $SCROT;
+dunstify -i folder-pictures "Screenshot taken:" "Picture saved!";

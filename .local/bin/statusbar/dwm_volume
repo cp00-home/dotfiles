@@ -1,0 +1,15 @@
+#!/bin/sh
+# DWMBAR Volume Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+MUTE="$(amixer get Master | grep '\[off\]')"
+VOLUME="$(amixer get Master | grep -o '[0-9]*%')"
+
+if [[ -z $MUTE ]]; then
+   printf "^c$COLOR^ ^d^%s " "$VOLUME"
+else
+   printf "^c$COLOR^ ^d^%s " "$VOLUME"
+fi
+

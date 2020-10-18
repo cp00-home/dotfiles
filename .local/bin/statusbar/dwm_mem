@@ -1,0 +1,9 @@
+#!/bin/sh
+# DWMBAR Memory Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+MEM="$(free -m | awk 'NR==2{printf "%s / %sMB\n", $3,$2,$3*100/$2 }')"
+printf "^c$COLOR^ ^d^%s " "$MEM"
+

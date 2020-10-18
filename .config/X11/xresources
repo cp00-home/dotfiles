@@ -1,0 +1,128 @@
+! ┐ │┬─┐┬─┐┐─┐┌─┐┬ ┐┬─┐┌─┐┬─┐┐─┐
+! ┌┼┘│┬┘├─ └─┐│ ││ ││┬┘│  ├─ └─┐
+! ┆ └┆└┘┴─┘──┘┘─┘┆─┘┆└┘└─┘┴─┘──┘
+
+#define light       #E7E7D4
+#define dark        #657B83
+#define grey        #999999
+#define blue        #87BCBB
+
+! General colors bright
+
+*background:                light
+*foreground:                dark
+
+! vis editor
+vis.background:             light
+vis.foreground:             dark
+
+! dwm settings
+
+dwm.normbordercolor:        grey
+dwm.normbgcolor:            light
+dwm.normfgcolor:            dark
+dwm.selbordercolor:         dark
+dwm.selbgcolor:             dark
+dwm.selfgcolor:             light
+dwm.baricon:                dark
+
+! xmenu settings
+
+xmenu.borderWidth:          2
+xmenu.separatorWidth:       1
+xmenu.height:               21
+xmenu.width:                120
+xmenu.gap:                  5
+xmenu.background:           light
+xmenu.foreground:           dark
+xmenu.selbackground:        dark
+xmenu.selforeground:        light
+xmenu.separator:            dark
+xmenu.border:               dark
+
+! terminal colors
+
+URxvt*colorUL:              dark
+URxvt*cursorColor:          dark
+
+URxvt*cursorUnderline:      1
+URxvt*cursorBlink:          1
+
+URxvt*internalBorder:       8
+URxvt*externalBorder:       10
+URxvt*matcher.button:       1
+URxvt*iso14755:             False
+URxvt*iso14755_52:          False
+
+URxvt*saveLines:            8000
+URxvt*scrollBar:            True
+URxvt*scrollColor:          #D4D4C1
+URxvt*scrollstyle:          plain
+URxvt*thickness:            15
+URxvt*scrollTtyOutput:      False
+URxvt*scrollTtyKeypress:    True
+URxvt*secondaryScroll:      True
+URxvt*underlineURLs:        True
+URxvt*url-launcher:         /usr/local/bin/surf
+URxvt*matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt*perl-ext:             default,matcher,resize-font
+
+! xcolors
+
+!black
+*color0:    light
+*color8:    #079C91
+
+!red
+*color1:    #6F6F6F
+*color9:    #8BC0C7
+
+!green
+*color2:    #D7D7C4
+*color10:   #2AA198
+
+!yellow
+*color3:    #676767
+*color11:   #657B83
+
+!blue
+*color4:    #8BC0C7
+*color12:   #D2D2D2
+
+!magenta
+*color5:    #6D6D6D
+*color13:   #A5A5A5
+
+!cyan
+*color6:    #455B63
+*color14:   #A9A9A9
+
+!white
+*color7:    dark
+*color15:   #CFCFCF
+
+! font settings
+
+URxvt*font:             xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Book,\
+                        xft:Kochi Gothic:antialias=false
+URxvt*boldfont:         xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Bold,\
+                        xft:Kochi Gothic:antialias=false
+URxvt*italicfont:       xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Oblique,\
+                        xft:Kochi Gothic:antialias=false
+Urxvt*bolditalicfont:   xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Bold Oblique,\
+                        xft:Kochi Gothic:antialias=false
+
+!Emacs*font:             xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Book
+!Emacs*boldfont:         xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Bold
+!Emacs*italicfont:       xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Oblique
+!Emacs*bolditalicfont:   xft:DejaVuSansMono Nerd Font Mono:pixelsize=10:antialias=true:hinting=true:style=Bold Oblique
+
+!URxvt*backgroundPixmap:     /home/geldmacher/pictures/wallpapers/patterns/arches.xbm
+
+!fake transparency
+!URxvt*transparent: True
+!URxvt*shading: 30
+
+!real transparency
+!URxvt*depth: 32
+!URxvt*background: rgba:0000/0000/0200/f500

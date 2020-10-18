@@ -1,0 +1,26 @@
+#!/bin/bash
+# Draw video area to record
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+FILE="$HOME/documents/video/$(date +%Y%m%d%H%m%S)_screencap.mp4"
+
+if pidof ffmpeg
+  then
+    killall ffmpeg
+    dunstify -i folder-pictures "Video taken:" "Stopped recording!"
+  else 
+    slop=$(slop -t 0 -b 2 -c 1,1,1,1 -f "%x %y %w %h" --nokeyboard)
+    read -r X Y W H < <(echo $slop)
+    time=$(date +%F%T)
+    width=${#W}
+
+    if [ $width -gt 0 ];
+     then
+      dunstify -i folder-pictures "Video taken:" "Started Recording!"
+      ffmpeg -f x11grab -s "$W"x"$H" -framerate 60  -thread_queue_size 512  -i $DISPLAY.0+$X,$Y \
+       -vcodec libx264 -qp 18 -preset ultrafast \
+       $FILE
+    fi
+fi
+

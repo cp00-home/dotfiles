@@ -1,0 +1,57 @@
+# ┬─┐┬─┐┐─┐┬ ┬┬─┐┌─┐
+# │─││─┤└─┐│─┤│┬┘│  
+# ┆─┘┘ ┆──┘┆ ┴┆└┘└─┘
+
+# BASHRC Configuration
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+source $HOME/.local/bin/aliases
+source $HOME/.local/bin/colors
+
+# set PATH to be included
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Set up env variables
+export BROWSER=surf
+export EDITOR=vis
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+	--height 40% --layout=reverse --border --no-info --prompt='─╼'
+	--color=fg+:024,bg+:-1,hl:024,hl+:024,border:-1
+	--color=pointer:024,prompt:024"
+
+export LESSHISTFILE=-
+export PROMPT_COMMAND=prompt_cmd
+export TERMINAL=urxvt
+
+# Set bash options
+shopt -s autocd             # change to named directory
+shopt -s cdspell            # autocorrects cd misspellings
+shopt -s cmdhist            # safe multiple lines in history as one
+shopt -s histappend         # do not overwrite history
+shopt -s dotglob            # include dotfiles in pathname expansion
+shopt -s expand_aliases     # expand aliases
+
+# Startup information
+echo -e     " ─╼ usr: $USER";
+echo -e     " ─╼ sys: `uname -smr`";
+echo -en    " ─╼ dat: "; date
+echo ""
+
+# Set normal prompt line
+prompt_cmd() {
+    if [ $PWD == $HOME ]; then
+        export PS1="\[$LIGHTGRAY\]\$USER [\[\e[0m\]\[$BLUE\]  home \[\e[0m\]\[$LIGHTGRAY\]] $ \[\e[0m\]";
+    else
+        export PS1="\[$LIGHTGRAY\]\$USER [\[\e[0m\]\[$BLUE\]  \W \[\e[0m\]\[$LIGHTGRAY\]] $ \[\e[0m\]";
+    fi;
+}
+
+# Set two line prompt
+# PS1="┌─[\[\e[01;37m\]\h\[\e[0m\] \[\e[00;36m\]\w\[\e[0m\]]\n└─╼ "
+
+# Set up fuzzy completion on terminal
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+

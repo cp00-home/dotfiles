@@ -1,0 +1,21 @@
+#!/bin/sh
+# DWMBAR Battery Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+STATUS="$(cat /sys/class/power_supply/BAT0/status)"
+CHARGE="$(cat /sys/class/power_supply/BAT0/capacity)"
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+
+if [ "$STATUS" = "Charging" ] || [ $STATUS = "Unknown" ]; then
+    printf "^c$COLOR^ ^d^%s%% " "$CHARGE"
+elif [[ $CHARGE -lt 10 ]]; then
+    printf "^c$COLOR^ ^d^%s%% " "$CHARGE"
+elif [[ $CHARGE -lt 50 ]]; then
+    printf "^c$COLOR^ ^d^%s%% " "$CHARGE"
+elif [[ $CHARGE -lt 80 ]]; then
+    printf "^c$COLOR^ ^d^%s%% " "$CHARGE"
+else   
+    printf "^c$COLOR^ ^d^%s%% " "$CHARGE"
+fi
+

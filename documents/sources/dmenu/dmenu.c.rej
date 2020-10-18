@@ -1,0 +1,10 @@
+--- dmenu.c
++++ dmenu.c
+@@ -604,6 +604,7 @@ setup(void)
+ 
+ 	/* calculate menu geometry */
+ 	bh = drw->fonts->h + 2;
++	bh = MAX(bh,lineheight);	/* make a menu line AT LEAST 'lineheight' tall */
+ 	lines = MAX(lines, 0);
+ 	mh = (lines + 1) * bh;
+ #ifdef XINERAMA

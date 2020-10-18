@@ -1,0 +1,6 @@
+#!/bin/bash
+# Weather fetching script
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+dunstify -r 1220 "Wetterbericht:" "$(curl -s 'https://de.wttr.in/Backnang?format=%l:+%c+%C+%t' 2>/dev/null 3>/dev/null | sed -r "s:\x1B\[[0-9;]*[mK]::g")"

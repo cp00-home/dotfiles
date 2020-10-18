@@ -1,0 +1,36 @@
+# BASHRC ALIASES
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+# Aliases/Shortcuts
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ascii="toilet -t -f rusto"
+alias cls="clear"
+alias df="df -Th"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/documents/sources/dotfiles/ --work-tree=$HOME"
+alias egrep="egrep --color=auto"
+alias fgrep="pgrep --color=auto"
+alias free="free -h"
+alias grep="grep --color=auto"
+alias irssi="irssi --home=~/.config/irssi --config=~/.config/irssi/config"
+alias ls="ls -a --group-directories-first"
+alias ll="ls -aFls --group-directories-first"
+alias la="ls -all --group-directories-first"
+alias mail="neomutt"
+alias music="ncmpcpp -q"
+alias mv="mv -i"
+alias rm="rm -i"
+alias picture="sxiv -bt ."
+alias rr="ranger"
+alias v="vis"
+alias wget="wget --hsts-file=~/.config/wget/wget-hsts"
+
+# Functions
+
+docs()	{ nano $(ls -d $HOME/.local/bin/* | sed 's/\*//g' | fzf --preview 'head -100 {}') ;}
+paste()	{ curl -F 'f:1=<-' ix.io ;}
+wmip()	{ printf "External IP-Adress: %s\n" $(curl -s http://ifconfig.me/) ;}
+ytube()	{ mpv --ytdl-format=best $(xsel -o) ;}
+

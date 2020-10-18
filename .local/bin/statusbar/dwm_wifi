@@ -1,0 +1,16 @@
+#!/bin/sh
+# DWMBAR Wifi Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+WIFI="$(grep '^\s*w' /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')"
+
+if [[ $WIFI -gt 80 ]]; then
+	printf "^c$COLOR^ ^d^%s%% " "$WIFI"
+elif [[ $WIFI -gt 60 ]]; then
+	printf "^c$COLOR^ ^d^%s%% " "$WIFI"
+else
+	printf "^c$COLOR^ ^d^%s%% " "$WIFI"
+fi
+

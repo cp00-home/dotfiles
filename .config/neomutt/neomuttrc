@@ -1,0 +1,132 @@
+# ┌┐┐┬─┐┌─┐┌┌┐┬ ┐┌┐┐┌┐┐
+# │││├─ │ │││││ │ │  │ 
+# ┆└┘┴─┘┘─┘┘ ┆┆─┘ ┆  ┆
+
+# Neomutt configuration file
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+# Global options
+
+set autoedit                = yes
+set edit_headers            = yes
+set help                    = yes
+set markers                 = no
+set mark_old                = no
+set mime_forward            = yes
+set wait_key                = no
+set editor                  = "vis"
+set sort                    = "reverse-date"
+
+set fast_reply
+set fcc_attach
+set include
+
+# Status and sidebar options
+
+set mail_check_stats
+set sidebar_visible
+
+set sidebar_width           = 20
+set sidebar_short_path      = yes
+set sidebar_folder_indent   = yes
+set sidebar_next_new_wrap   = yes
+set sidebar_divider_char    = '│'
+set sidebar_indent_string   = '  ''
+set sidebar_format          = "  %B%?F? [%F]?%* %?N?%N/? %?S?%S?"
+set index_format            = " %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)&  ? %?X?&·? %s"
+set pager_format            = " %n %zc  %T %s%*  %{!%d %b · %H:%M} %?X?  %X ? %P  "
+set status_format           = "  %f%?r? %r?   %m %?n?  %n ?  %?d?  %d ?%?t?  %t ?%?F?  %F? %> %?p?   %p ?"
+set vfolder_format          = " %N %?n?%3n&   ?  %8m  · %f"
+set attach_format           = "%u%D  %T%-75.75d %?T?%&   ? %5s · %m/%M"
+set to_chars                = ""
+set status_chars            = " "
+set flag_chars              = "      "
+set date_format             = "%d.%m.%Y %H:%M"
+set charset                 = "utf-8"
+
+tag-transforms              "replied" "↻ "  \
+                            "encrytpted" "" \
+                            "signed" "" \
+                            "attachment" "" \
+
+tag-formats                 "replied" "GR" \
+                            "encrypted" "GE" \
+                            "signed" "GS" \
+                            "attachment" "GA" \
+
+# Color options
+
+color index white black '.*'
+color indicator white green
+color sidebar_indicator white green
+
+color status black white
+color status black white    'Total: '
+color status black white    ''
+color status black white    ''
+color status black white    '(.*)' 1
+color status black white    '.*()' 1
+color status black white    '\s* [0-9]+\s*'
+color status black white    '().*$' 1
+color status black white    '()\s*\s*[0-9]+\s*' 1
+color status black white    '\s*\s*[0-9]+\s*'
+color status black white    '() ([0-9]+%|all|end) \s*' 1
+color status black white    ' ([0-9]+%|all|end) \s*'
+color status black white    '()\s*' 1
+color status black white    ''
+
+color header white black    '.*'
+color header bold yellow black '^(From)'
+color header bold yellow black '^(To)'
+color header bold yellow black '^(Reply-To)'
+color header bold yellow black '^(Subject)'
+color header bold yellow black '^(CC|BCC)'
+
+# Setting up name and mail from
+
+set realname                = "Jan Geldmacher"
+set from                    = "geldmacher@teknik.io"
+set use_from                = yes
+
+# Imap and smtp configuration
+unset imap_passive
+set imap_check_subscribed
+set imap_user               = "geldmacher@teknik.io"
+set folder                  = "imaps://mail.teknik.io/"
+set spoolfile               = "+Inbox"
+set record                  = "Sent"
+set postponed               = "Drafts"
+set smtp_url                = "smtps://$imap_user@mail.teknik.io/"
+
+#mailboxes "=INBOX"
+
+# Misc options
+#set ssl_starttls            = yes
+#set ssl_force_tls           = yes
+set net_inc                 = 5
+set mail_check              = 360
+
+# Vim like keybindings
+bind index,pager    \Cb     sidebar-toggle-visible
+bind index,pager    k       previous-entry
+bind index,pager    j       next-entry
+bind index,pager    g       noop
+bind index,pager    \Cu     half-up
+bind index,pager    \Cd     half-down
+bind pager          gg      top
+bind index          gg      first-entry
+bind pager          G       bottom
+bind index          G       last-entry
+
+# Sidebar Navigation
+bind index,pager    <down>  sidebar-next
+bind index,pager    <up>    sidebar-prev
+bind index,pager    <right> sidebar-open
+
+# Global index and pager shortcuts
+bind index,pager @ compose-to-sender
+bind index,pager R group-reply
+bind index,pager D purge-message
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread

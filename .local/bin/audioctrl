@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script for media control
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+if [ -z $(pgrep -x cmus) ] >/dev/null; then
+	exit;
+else
+	if [ $1 == "play" ]; then
+		cmus-remote -p;
+#		dunstify -r 2593 -i folder-music "Currently playing:" "$(cmus-remote -Q | grep -e 'tag artist ' -e 'tag title ' | sort | sed -e 's/tag artist //' -e 's/tag title/ -/' | tr -d '\n')";
+	elif [ $1 == "next" ]; then
+		cmus-remote -n;
+#		dunstify -r 2593 -i folder-music "Next Song:" "$(cmus-remote -Q | grep -e 'tag artist ' -e 'tag title ' | sort | sed -e 's/tag artist //' -e 's/tag title/ -/' | tr -d '\n')";
+	elif [ $1 == "prev" ]; then
+		cmus-remote -r
+#		dunstify -r 2593 -i folder-music "Previous Song:" "$(cmus-remote -Q | grep -e 'tag artist ' -e 'tag title ' | sort | sed -e 's/tag artist //' -e 's/tag title/ -/' | tr -d '\n')";
+	elif [ $1 == "stop" ]; then
+		cmus-remote -s;
+#		dunstify -r 2593 -i folder-music "Stopped playing:" "$(cmus-remote -Q | grep -e 'tag artist ' -e 'tag title ' | sort | sed -e 's/tag artist //' -e 's/tag title/ -/' | tr -d '\n')";
+	fi
+fi

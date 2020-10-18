@@ -1,0 +1,11 @@
+#!/bin/bash
+# Song notification script
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+NP="$(ncmpcpp --current-song "%b" -q)"
+ARTIST="$(ncmpcpp --current-song "%a" -q)"
+SONG="$(ncmpcpp --current-song "%t" -q)"
+COVER="/home/geldmacher/music/*$NP*/Cover.jpg"
+
+dunstify -i $COVER -r 2600 -u normal "$ARTIST" "$SONG"

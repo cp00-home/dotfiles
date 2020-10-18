@@ -1,0 +1,9 @@
+#!/bin/sh
+# DWMBAR Time Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+TIME="$(date '+%R Uhr')"
+printf "^c$COLOR^ ^d^%s " "$TIME"
+

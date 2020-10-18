@@ -1,0 +1,8 @@
+#!/bin/sh
+# DWMBAR Disk Usage Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+HDD="$(df -h | awk 'NR==4{print $5}')"
+printf "^c$COLOR^ ^d^%s " "$HDD"

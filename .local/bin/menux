@@ -1,0 +1,43 @@
+#!/bin/sh
+# Xmenu script to launch apps
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+# ignore hup signal
+trap "" 1 15
+
+cat <<EOF | xmenu -i test | sh &
+ﬓ Applications
+	ﬓ Emacs Editor		emacs
+	ﬓ IRC Chat			urxvtc -e irssi --home=~/.config/irssi --config=~/.config/irssi/config
+	ﬓ Mail Client		urxvtc -e neomutt
+	ﬓ Music Player		urxvtc -e ncmpcpp
+	ﬓ Watch TV			watchtv
+	ﬓ Web Browser		surf -pe x "https://dwm.suckless.org"
+ Documents
+	 SICP				zathura ~/documents/books/sicp.pdf
+	 FSFS				zathura ~/documents/books/fsfs3.pdf
+	 UNAB				zathura ~/documents/books/unab.pdf
+ Locations
+	 Documents			urxvtc -e ranger ~/documents
+	 Downloads			urxvtc -e ranger ~/downloads
+	 Music				urxvtc -e ranger ~/music
+	 Pictures			urxvtc -e ranger ~/pictures
+	 Sources			urxvtc -e ranger ~/documents/sources
+ Settings
+	 dwmbar font		xfd -fn -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+	 system font		xfd -fa "DejaVuSansMono Nerd Font Mono:size=10:style=Book"
+	 bash				urxvtc -e vis ~/.config/bash/bashrc
+	 xprofile			urxvtc -e vis ~/.profile
+	 xinit				urxvtc -e vis ~/.xinitrc
+	 xresources		urxvtc -e vis ~/.Xresources
+ System
+	 monitor			urxvtc -e htop
+	 wallpaper			urxvtc -e wallpaper
+	 snapshot			drawsnap
+	 record			drawvid
+	 suspend			systemctl suspend
+	 reboot			systemctl reboot
+	 shutdown			systemctl poweroff
+ Terminal				drawterm
+EOF

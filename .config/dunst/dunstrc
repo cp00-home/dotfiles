@@ -1,0 +1,69 @@
+# ┬─┐┬ ┐┌┐┐┐─┐┌┐┐
+# │ ││ ││││└─┐ │ 
+# ┆─┘┆─┘┆└┘──┘ ┆
+
+# DUNSTRC Configuration
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+[global]
+monitor = 0
+follow = mouse
+geometry = "180x0-595+330"
+notification-height = 10
+indicate_hidden = yes
+shrink = no
+separator_height = 0
+padding = 12
+horizontal_padding = 16
+frame_width = 2
+sort = no
+idle_threshold = 120
+font = DejaVu Sans Condensed 8
+line_height = full
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = center
+show_age_threshold = 60
+word_wrap = no
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = yes
+show_indicators = no
+sticky_history = no
+#icon_position = left
+icon_path=/usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/actions/:/usr/share/icons/Adwaita/32x32/apps/:/usr/share/icons/Adwaita/32x32/categories/:/usr/share/icons/Adwaita/32x32/devices/:/usr/share/icons/Adwaita/32x32/emblems:/usr/share/icons/Adwaita/32x32/emotes/:/usr/share/icons/Adwaita/32x32/legacy/:/usr/share/icons/Adwaita/32x32/mimetypes/:/usr/share/icons/Adwaita/32x32/places/:/usr/share/icons/Adwaita/32x32/ui/
+history_length = 1
+browser = /usr/bin/surf
+dmenu = /usr/bin/dmenu -p dunst
+always_run_script = true
+title = Dunst
+class = Dunst
+
+[shortcuts]
+close = ctrl+space
+close_all = ctrl+shift+space
+context = ctrl+shift+period
+
+[urgency_low]
+timeout = 4
+background =    "#e7e7d4"
+foreground =    "#657b83"
+frame_color =   "#657b83"
+
+[urgency_normal]
+timeout = 8
+background = "#e7e7d4"
+foreground = "#657b83"
+frame_color = "#657b83"
+
+[urgency_critical]
+timeout = 0
+background = "#e7e7d4"
+foreground = "#657b83"
+frame_color = "#657b83"
+
+[volume]
+appname = Volume Control Buttons
+script = ~/.local/bin/changevol
+history_ignore = yes

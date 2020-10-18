@@ -1,0 +1,8 @@
+#!/bin/bash
+# kill currently selected window
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+WINID=$(xwininfo | grep "Window id" | awk '{print $4}')
+echo $WINID
+#wmctrl -ic $WINID

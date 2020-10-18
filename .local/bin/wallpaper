@@ -1,0 +1,25 @@
+#!/bin/bash
+# Small Wallpaper fetching script
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+if [ -z $1 ]; then
+	feh --no-fehbg --bg-fill $(ls -d $HOME/pictures/wallpapers/* | fzf) &>/dev/null
+	dunstify -r 2593 "Wallpaper changed:" "$(echo -e 'Using a locally stored wallpaper.')"
+elif [ $1 == "start" ]; then
+	feh --no-fehbg --bg-fill $HOME/pictures/wallpapers/wallpaper-0048.png
+	dunstify -r 2593 "Welcome home" "How are you today?"
+elif [ $1 == "default" ]; then
+	feh --no-fehbg --bg-fill $HOME/pictures/wallpapers/wallpaper-1428.jpg
+	dunstify -r 2593 "Wallpaper changed:" "$(echo -e 'Using the default wallpaper.')"
+elif [ $1 == "tile" ]; then
+	feh --no-fehbg --bg-tile $(ls -d $HOME/pictures/tiles/* | fzf) &>/dev/null
+	dunstify -r 2593 "Wallpaper changed:" "$(echo -e 'Using a tiling wallpaper.')"
+elif [ $1 == "blur" ]; then
+    convert $HOME/pictures/wallpapers/wallpaper.jpg -blur 0x32 $HOME/pictures/wallpapers/wallpaper-blur.jpg &>/dev/null
+    feh --no-fehbg --bg-fill $HOME/pictures/wallpapers/wallpaper-blur.jpg
+else
+	wget --hsts-file=~/.config/wget/wget-hsts https://source.unsplash.com/random/1920x1080/?$1 -O $HOME/pictures/wallpapers/wallpaper.jpg &>/dev/null
+	feh --no-fehbg --bg-fill $HOME/pictures/wallpapers/wallpaper.jpg
+	dunstify -r 2593 "Wallpaper changed:" "$(echo -e 'Using a custom wallpaper.')"
+fi

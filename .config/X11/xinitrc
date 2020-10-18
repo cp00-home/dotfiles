@@ -1,0 +1,21 @@
+#!/bin/sh
+# XINIT.RC Configuration
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+# font settings
+xrdb -merge ~/.config/X11/xresources
+
+xset +fp /usr/share/fonts/TTF &
+xset fp rehash &
+xset b off&
+
+# executed when graphical session starts
+
+wallpaper start                 &       # sets background wallpaper
+picom                           &       # compositing for transparency
+unclutter                       &       # removes mouse cursor on idle
+dwmblocks                       &       # starts dwm status bar
+dunst                           &       # starts notification service
+exec dwm                                # starts dwm
+

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Shutdown dmenu Script
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+kill_apps() {
+	while read -r app; do
+		wmctrl -i -c "$app"
+	done < <(wmctrl -l | awk '{print $1}')
+}
+
+choice=$(echo -e "Lock Screen\nSuspend\nReboot\nShutdown" | \
+dmenu -i -fn 'DejaVu Sans Condensed:pixelsize=10' -p ' System: ' )
+
+# execute the choice in background
+case "$choice" in
+	"Lock Screen") slock & ;;
+	"Suspend") systemctl suspend & ;;
+	"Reboot") systemctl reboot & ;;
+	"Shutdown") systemctl poweroff & ;;
+esac

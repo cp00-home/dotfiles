@@ -1,0 +1,36 @@
+#!/bin/bash
+# Watch Television Livestreams
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+station=$(echo -e "ARD\nZDF\nBR\nARTE\nALPHA\nOne\n3Sat\nZDFinfo\nZDFneo\nPhoenix\nKiKa\nWelt" | \
+dmenu -i -fn 'DejaVu Sans Condensed:pixelsize=10' -p ' Channel:' )
+
+# Fetching Livestream data
+
+case $station in
+    "ARD") #EXTINF:-1,Das Erste 
+    mpv https://mcdn.daserste.de/daserste/de/master_3744.m3u8 & &>/dev/null ;;
+    "ZDF") #EXTINF:-1,ZDF
+    mpv https://zdf-hls-01.akamaized.net/hls/live/2002460/de/high/master.m3u8 & &>/dev/null;;
+    "BR") #EXTINF:-1,BR Fernsehen Süd
+    mpv http://livestreams.br.de/i/bfssued_germany@119890/index_3776_av-p.m3u8?sd=10&rebase=on & &>/dev/null;;
+    "ARTE") #EXTINF:-1,ARTE
+    mpv http://artelive-lh.akamaihd.net/i/artelive_de@393591/index_1_av-b.m3u8?sd=10&rebase=on & &>/dev/null;;
+    "ALPHA") #EXTINF:-1,ard-alpha
+    mpv http://livestreams.br.de/i/bralpha_germany@119899/index_3776_av-b.m3u8?sd=10&rebase=on & &>/dev/null;;
+    "One") #EXTINF:-1,One
+    mpv https://onelivestream-lh.akamaihd.net/i/one_livestream@568814/master.m3u8?set-segment-duration=responsive & &>/dev/null;;
+    "3Sat") #EXTINF:-1,3Sat
+    mpv https://zdfhls18-i.akamaihd.net/hls/live/744751/dach/3/3.m3u8 & &>/dev/null;;
+    "ZDFinfo") #EXTINF:-1,ZDFinfo
+    mpv https://zdfhls17-i.akamaihd.net/hls/live/744750/de/5/5.m3u8 & &>/dev/null;;
+    "ZDFneo") #EXTINF:-1,ZDFneo
+    mpv https://zdf-hls-02.akamaized.net/hls/live/2002461/de/high/master.m3u8 & &>/dev/null;;
+    "Phoenix") #EXTINF:-1,Phoenix
+    mpv https://zdfhls19-i.akamaihd.net/hls/live/744752/de/5/5.m3u8 & &>/dev/null;;
+    "KiKa") #EXTINF:-1,KiKa
+    mpv http://kikade-lh.akamaihd.net/i/livetvkika_de@450035/index_3776_av-p.m3u8 & &>/dev/null;;
+    "Welt") #EXTINF:-1,Welt
+    mpv https://live2weltcms-lh.akamaihd.net/i/Live2WeltCMS_1@444563/index_1_av-b.m3u8 & &>/dev/null;;
+esac

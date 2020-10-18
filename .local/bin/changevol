@@ -1,0 +1,45 @@
+#!/bin/bash
+# Simple volume changing script
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+function get_volume {
+  amixer get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
+}
+
+function is_mute {
+  amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
+}
+
+function send_notification {
+  if is_mute ; then
+    dunstify -r 2593 -u normal "mute"
+  else
+    volume=$(get_volume)
+    bar=$(seq --separator="━" 0 "$((volume / 5))" | sed 's/[0-9]//g')
+    # Send the notification
+    dunstify -r 2593 -u normal "Change volume:" "$bar"
+  fi
+}
+
+case $1 in
+  up)
+    # set the volume on (if it was muted)
+    amixer -q set Master on
+    # up the volume (+ 5%)
+    amixer -q set Master 5%+
+    send_notification
+    ;;
+  down)
+    amixer -q set Master on
+    amixer -q set Master 5%-
+    send_notification
+    ;;
+  mute)
+    # toggle mute
+    amixer -q set Master,0 toggle
+    send_notification
+    ;;
+esac >/dev/null
+
+kill -44 $(pidof dwmblocks)

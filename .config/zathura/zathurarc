@@ -1,0 +1,42 @@
+# ┌─┐┬─┐┌┐┐┬ ┬┬ ┐┬─┐┬─┐
+# ┌─┘│─┤ │ │─┤│ ││┬┘│─┤
+# └─┘┘ ┆ ┆ ┆ ┴┆─┘┆└┘┘ ┆
+
+# Zathura Config File
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+# General settings
+
+set adjust-open             "noadjust"
+set font                    "DejaVu Sans Mono 8"
+set guioptions              "none"
+set show-scrollbars         "false"
+set window-height           "650"
+set window-width            "527"
+
+set window-title-basename   "true"
+
+# Color settings
+
+set completion-bg           "#E7E7D4"
+set completion-fg           "#657B83"
+set completion-group-bg     "#657B83"
+set completion-group-fg     "#E7E7D4"
+set completion-highlight-bg "#657B83"
+set completion-highlight-fg "#E7E7D4"
+set default-bg              "#E7E7D4"
+set default-fg              "#657B83"
+set highlight-color         "#006699"
+set highlight-active-color  "#006699"
+set inputbar-bg             "#E7E7D4"             
+set inputbar-fg             "#657B83"
+set notification-bg         "#657B83"
+set notification-fg         "#E7E7D4"
+set statusbar-bg            "#657B83"
+set statusbar-fg            "#E7E7D4"
+
+set recolor                 "true"
+set recolor-darkcolor       "#657B83"
+set recolor-lightcolor      "#E7E7D4"
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+# PASTE-SCRIPT FOR IX.IO
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+curl -F 'f:1=<-' ix.io | xclip

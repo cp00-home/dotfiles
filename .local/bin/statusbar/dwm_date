@@ -1,0 +1,9 @@
+#!/bin/sh
+# DWMBAR Date Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+DATE="$(date '+%d.%m.%Y')"
+
+printf "^c$COLOR^ ^d^%s " "$DATE"

@@ -1,0 +1,24 @@
+#!/bin/sh
+# DWMBAR Traffic Module
+# Written by: Jan Geldmacher
+# Email: geldmacher@protonmail.com
+
+COLOR="$(xrdb -query | grep dwm.baricon | awk '{print $2}')"
+
+# inital received and transmitted kb
+REC=`cat /sys/class/net/wlp3s0/statistics/rx_bytes`
+TRANS=`cat /sys/class/net/wlp3s0/statistics/tx_bytes`
+
+sleep 1
+
+# current received and transmitted kb
+REC2=`cat /sys/class/net/wlp3s0/statistics/rx_bytes`
+TRANS2=`cat /sys/class/net/wlp3s0/statistics/tx_bytes`
+
+# calculating kb/s
+TKBPS=$(( (TRANS2-TRANS) / 1024 ))
+RKBPS=$(( (REC2-REC) / 1024 ))
+#TKBPS=`expr '(' $TRANS2 - $TRANS ')' '/' 1024`
+#RKBPS=`expr '(' $REC2 - $REC ')' '/' 1024`
+
+printf "^c$COLOR^ ^d^%s ^c#657B83^ ^d^%s " "$RKBPS kb" "$TKBPS kb"
